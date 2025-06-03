@@ -1,5 +1,5 @@
 const users = [
-  { username: 'jose', password: '1234' },
+  { username: 'salaoms', password: 'salao110' },
   { username: 'admin', password: 'admin' },
 ];
 
