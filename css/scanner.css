@@ -1,0 +1,110 @@
+/* Reset e base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Cabeçalho */
+header {
+  width: 100%;
+  padding: 30px 0;
+  background-color: #e8f0fa;
+  text-align: center;
+  border-bottom: 2px solid #cfe2f3;
+}
+
+header h1 {
+  font-size: 2.5rem;
+  color: #0055a5;
+}
+
+/* Área de busca */
+main {
+  width: 100%;
+  max-width: 700px;
+  margin-top: 40px;
+  padding: 0 20px;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search-container input {
+  flex: 1;
+  padding: 14px 16px;
+  border: 2px solid #0073ce;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.search-container input:focus {
+  box-shadow: 0 0 8px rgba(0, 115, 206, 0.3);
+  outline: none;
+}
+
+.search-container button {
+  padding: 14px 22px;
+  font-size: 1rem;
+  border: none;
+  background-color: #0073ce;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.search-container button:hover {
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+
+/* Resultados */
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.result-item {
+  background-color: white;
+  padding: 16px 20px;
+  border-radius: 10px;
+  border-left: 5px solid #0073ce;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.result-item:hover {
+  transform: scale(1.01);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.result-item strong {
+  color: #0073ce;
+  margin-right: 5px;
+}
+
+/* Rodapé */
+footer {
+  margin-top: auto;
+  padding: 20px;
+  font-size: 0.9rem;
+  color: #888;
+  text-align: center;
+}
