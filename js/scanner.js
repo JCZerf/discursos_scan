@@ -7,6 +7,8 @@ let filteredDiscursos = []; // Discursos filtrados pela busca
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const resultsContainer = document.getElementById('results');
+const searchIcon = document.querySelector('.search-icon'); // Novo elemento da lupa
+const mascotLupa = document.querySelector('.mascot-lupa'); // Nova referência
 
 // Função para carregar os dados (do localStorage ou do JSON inicial)
 async function loadDiscursosData() {
@@ -188,40 +190,59 @@ function handleAnotacaoChange(event) {
     }
 }
 
-// Event listener para o botão de busca
-searchButton.addEventListener('click', () => {
+// Event listener para o botão de busca (com animação da lupa)
+searchButton.addEventListener('click', function() {
     const termo = searchInput.value.trim().toLowerCase();
-
-    if (!termo) {
-        // Se o termo de busca está vazio, exibe todos os discursos
+    
+    
+    
+    // Ativa estado de busca com animação
+    //
+    this.classList.add('searching');
+    mascotLupa.classList.add('searching');
+    
+    // Simula tempo de processamento (remova em produção)
+    setTimeout(() => {
+        if (!termo) {
         filteredDiscursos = [...allDiscursos];
-        currentPage = 1; // Volta para a primeira página
+        currentPage = 1;
         displayResults(filteredDiscursos);
-        return;
+        } else {
+        filteredDiscursos = allDiscursos.filter(d =>
+            d.numero.toString() === termo || d.titulo.toLowerCase().includes(termo)
+        );
+        currentPage = 1;
+        displayResults(filteredDiscursos);
     }
-
-    // Filtra os discursos com base no termo de busca (número ou título)
-    filteredDiscursos = allDiscursos.filter(d =>
-        d.numero.toString() === termo || d.titulo.toLowerCase().includes(termo)
-    );
-
-    currentPage = 1; // Volta para a primeira página
-    displayResults(filteredDiscursos);
-
-    // Se encontrou exatamente um resultado, rola até ele
-    if (filteredDiscursos.length === 1) {
-        const targetElement = document.getElementById(`discurso-${filteredDiscursos[0].numero}`);
-        if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            // Adiciona um destaque temporário em azul para combinar com o tema
-            targetElement.style.backgroundColor = '#e8f0fa';
-            targetElement.style.boxShadow = '0 0 8px rgba(0, 115, 206, 0.5)';
+        
+        // Feedback visual diferente se encontrou resultados
+        if (filteredDiscursos.length > 0) {
+            mascotLupa.classList.remove('searching');
+            mascotLupa.classList.add('found');
             setTimeout(() => {
-                targetElement.style.backgroundColor = ''; // Remove destaque
-                targetElement.style.boxShadow = '';
-            }, 2000);
+                mascotLupa.classList.remove('found');
+            }, 1000);
+            } else {
+            mascotLupa.classList.remove('searching');
         }
+        // Desativa estado de busca
+        this.classList.remove('searching');
+        
+        // Destaque do resultado único
+          // Destaque do resultado único
+    if (filteredDiscursos.length === 1) {
+      const targetElement = document.getElementById(`discurso-${filteredDiscursos[0].numero}`);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        targetElement.style.backgroundColor = '#e8f0fa';
+        targetElement.style.boxShadow = '0 0 8px rgba(0, 115, 206, 0.5)';
+        setTimeout(() => {
+          targetElement.style.backgroundColor = '';
+          targetElement.style.boxShadow = '';
+        }, 2000);
+      }
     }
+  }, 800);
 });
 
 // Event listener para pesquisar ao pressionar Enter
