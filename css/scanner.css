@@ -3,11 +3,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-  background-color: #f4f6f9;
+  background-color: #f8f6f2; /* Fundo bege claro similar ao PDF */
   color: #333;
   min-height: 100vh;
   display: flex;
@@ -19,21 +19,24 @@ body {
 header {
   width: 100%;
   padding: 30px 0;
-  background-color: #e8f0fa;
+  background-color: #0073ce; /* Mantendo a cor azul principal */
   text-align: center;
-  border-bottom: 2px solid #cfe2f3;
+  border-bottom: 2px solid #005fa3;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 header h1 {
   font-size: 2.5rem;
-  color: #0055a5;
+  color: white;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Área de busca */
 main {
   width: 100%;
-  max-width: 700px;
-  margin-top: 40px;
+  max-width: 900px; /* Aumentado para acomodar a tabela */
+  margin: 40px auto;
   padding: 0 20px;
 }
 
@@ -49,55 +52,179 @@ main {
   border: 2px solid #0073ce;
   border-radius: 10px;
   font-size: 1rem;
-  transition: box-shadow 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .search-container input:focus {
-  box-shadow: 0 0 8px rgba(0, 115, 206, 0.3);
+  box-shadow: 0 0 12px rgba(0, 115, 206, 0.25);
   outline: none;
+  border-color: #005fa3;
 }
 
 .search-container button {
   padding: 14px 22px;
   font-size: 1rem;
+  font-weight: 600;
   border: none;
   background-color: #0073ce;
   color: white;
   border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .search-container button:hover {
   background-color: #005fa3;
   transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Resultados */
-.results-container {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.search-container button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.result-item {
+/* Título da tabela */
+.table-title {
+  font-size: 1.8rem;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.table-subtitle {
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 30px;
+  font-style: italic;
+}
+
+/* Tabela de resultados */
+.results-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   background-color: white;
-  padding: 16px 20px;
   border-radius: 10px;
-  border-left: 5px solid #0073ce;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  font-size: 1.1rem;
-  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  margin-bottom: 40px;
 }
 
-.result-item:hover {
-  transform: scale(1.01);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-}
-
-.result-item strong {
+.results-table th {
+  background-color: #e8f0fa;
   color: #0073ce;
-  margin-right: 5px;
+  font-weight: 600;
+  text-align: left;
+  padding: 16px;
+  border-bottom: 2px solid #cfe2f3;
+}
+
+.results-table th:first-child {
+  width: 70px; /* Largura para o número */
+}
+
+.results-table th:nth-child(2) {
+  width: auto; /* Largura para o título */
+}
+
+.results-table th:last-child {
+  width: 40%; /* Largura para anotações */
+}
+
+.results-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.results-table tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tr:hover {
+  background-color: #f9f9f7;
+}
+
+/* Número do discurso */
+.discurso-numero {
+  font-weight: 600;
+  color: #0073ce;
+  text-align: center;
+}
+
+/* Título do discurso */
+.discurso-titulo {
+  font-weight: 500;
+}
+
+/* Campo de anotações */
+.anotacoes-field {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  min-height: 60px;
+  resize: vertical;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.anotacoes-field:focus {
+  outline: none;
+  border-color: #0073ce;
+  box-shadow: 0 0 6px rgba(0, 115, 206, 0.2);
+  background-color: white;
+}
+
+/* Mensagens de status */
+.status-message {
+  text-align: center;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.status-message.info {
+  background-color: #e8f0fa;
+  color: #0073ce;
+}
+
+.status-message.error {
+  background-color: #fee;
+  color: #d33;
+}
+
+/* Paginação */
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover {
+  background-color: #f0f0f0;
+}
+
+.pagination button.active {
+  background-color: #0073ce;
+  color: white;
+  border-color: #0073ce;
 }
 
 /* Rodapé */
@@ -107,4 +234,110 @@ footer {
   font-size: 0.9rem;
   color: #888;
   text-align: center;
+  width: 100%;
+  background-color: #f0f0f0;
+  border-top: 1px solid #ddd;
 }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+  }
+  
+  main {
+    padding: 0 10px;
+  }
+  
+  .table-title {
+    font-size: 1.5rem;
+  }
+  
+  .table-subtitle {
+    font-size: 0.9rem;
+    padding: 0 10px;
+  }
+  
+  /* Ajuste para tabela responsiva */
+  .results-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mantém todas as colunas visíveis, mas permite rolagem horizontal */
+  .results-table th,
+  .results-table td {
+    min-width: 100px;
+  }
+  
+  .results-table th:first-child,
+  .results-table td:first-child {
+    min-width: 50px;
+  }
+  
+  .results-table th:nth-child(2),
+  .results-table td:nth-child(2) {
+    min-width: 200px;
+  }
+  
+  .results-table th:last-child,
+  .results-table td:last-child {
+    min-width: 150px;
+  }
+  
+  /* Ajustes para campos de anotações em mobile */
+  .anotacoes-field {
+    min-height: 40px;
+    font-size: 0.9rem;
+  }
+  
+  /* Ajustes para paginação em mobile */
+  .pagination {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .pagination button {
+    margin: 2px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustes específicos para telas muito pequenas */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .search-container input,
+  .search-container button {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.results-container {
+  animation: fadeIn 0.4s ease-out;
+}
+
+.result-row {
+  animation: fadeIn 0.3s ease-out forwards;
+  opacity: 0;
+}
+
+.result-row:nth-child(1) { animation-delay: 0.05s; }
+.result-row:nth-child(2) { animation-delay: 0.1s; }
+.result-row:nth-child(3) { animation-delay: 0.15s; }
+.result-row:nth-child(4) { animation-delay: 0.2s; }
+.result-row:nth-child(5) { animation-delay: 0.25s; }
+/* E assim por diante... */

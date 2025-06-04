@@ -1,226 +1,235 @@
-const discursos = [
-  { "numero": 1, "titulo": "Você conhece bem a Deus?" },
-  { "numero": 2, "titulo": "Você vai sobreviver aos últimos dias?" },
-  { "numero": 3, "titulo": "Você está avançando com a organização unida de Jeová?" },
-  { "numero": 4, "titulo": "Que provas temos de que Deus existe?" },
-  { "numero": 5, "titulo": "Você pode ter uma família feliz!" },
-  { "numero": 6, "titulo": "O Dilúvio dos dias de Noé e você" },
-  { "numero": 7, "titulo": "Imite a misericórdia de Jeová" },
-  { "numero": 8, "titulo": "Viva para fazer a vontade de Deus" },
-  { "numero": 9, "titulo": "Escute e faça o que a Bíblia diz" },
-  { "numero": 10, "titulo": "Seja honesto em tudo" },
-  { "numero": 11, "titulo": "Imite a Jesus e não faça parte do mundo" },
-  { "numero": 12, "titulo": "Deus quer que você respeite quem tem autoridade" },
-  { "numero": 13, "titulo": "Qual o ponto de vista de Deus sobre o casamento?" },
-  { "numero": 14, "titulo": "Um povo puro e limpo honra a Jeová" },
-  { "numero": 15, "titulo": "‘Faça o bem a todos’" },
-  { "numero": 16, "titulo": "Seja cada vez mais amigo de Jeová" },
-  { "numero": 17, "titulo": "Glorifique a Deus com tudo o que você tem" },
-  { "numero": 18, "titulo": "Faça de Jeová a sua fortaleza" },
-  { "numero": 19, "titulo": "Como você pode saber seu futuro?" },
-  { "numero": 20, "titulo": "Chegou o tempo de Deus governar o mundo?" },
-  { "numero": 21, "titulo": "Dê valor ao seu lugar no Reino de Deus" },
-  { "numero": 22, "titulo": "Você está usando bem o que Jeová lhe dá?" },
-  { "numero": 23, "titulo": "A vida tem objetivo" },
-  { "numero": 24, "titulo": "Você encontrou “uma pérola de grande valor”?" },
-  { "numero": 25, "titulo": "Lute contra o espírito do mundo" },
-  { "numero": 26, "titulo": "Você é importante para Deus?" },
-  { "numero": 27, "titulo": "Como construir um casamento feliz" },
-  { "numero": 28, "titulo": "Mostre respeito e amor no seu casamento" },
-  { "numero": 29, "titulo": "As responsabilidades e recompensas de ter filhos" },
-  { "numero": 30, "titulo": "Como melhorar a comunicação na família" },
-  { "numero": 31, "titulo": "Você tem consciência da sua necessidade espiritual?" },
-  { "numero": 32, "titulo": "Como lidar com as ansiedades da vida" },
-  { "numero": 33, "titulo": "Quando vai existir verdadeira justiça?" },
-  { "numero": 34, "titulo": "Você vai ser marcado para sobreviver?" },
-  { "numero": 35, "titulo": "É possível viver para sempre? O que você precisa fazer?" },
-  { "numero": 36, "titulo": "Será que a vida é só isso?" },
-  { "numero": 37, "titulo": "Obedecer a Deus é mesmo a melhor coisa a fazer?" },
-  { "numero": 38, "titulo": "Como você pode sobreviver ao fim do mundo?" },
-  { "numero": 39, "titulo": "Jesus Cristo vence o mundo — Como e quando?" },
-  { "numero": 40, "titulo": "O que vai acontecer em breve?" },
-  { "numero": 41, "titulo": "Fiquem parados e vejam como Jeová os salvará" },
-  { "numero": 42, "titulo": "O amor pode vencer o ódio?" },
-  { "numero": 43, "titulo": "Tudo o que Deus nos pede é para o nosso bem" },
-  { "numero": 44, "titulo": "Como os ensinos de Jesus podem ajudar você?" },
-  { "numero": 45, "titulo": "Continue andando no caminho que leva à vida" },
-  { "numero": 46, "titulo": "Fortaleça sua confiança em Jeová" },
-  { "numero": 47, "titulo": "(Não use.)" },
-  { "numero": 48, "titulo": "Seja leal a Deus mesmo quando for testado" },
-  { "numero": 49, "titulo": "Será que um dia a Terra vai ser limpa?" },
-  { "numero": 50, "titulo": "Como sempre tomar as melhores decisões" },
-  { "numero": 51, "titulo": "Será que a verdade da Bíblia está mudando a sua vida?" },
-  { "numero": 52, "titulo": "Quem é o seu Deus?" },
-  { "numero": 53, "titulo": "Você pensa como Deus?" },
-  { "numero": 54, "titulo": "Fortaleça sua fé em Deus e em suas promessas" },
-  { "numero": 55, "titulo": "Você está fazendo um bom nome perante Deus?" },
-  { "numero": 56, "titulo": "Existe um líder em quem você pode confiar?" },
-  { "numero": 57, "titulo": "Como suportar perseguição" },
-  { "numero": 58, "titulo": "Quem são os verdadeiros seguidores de Cristo?" },
-  { "numero": 59, "titulo": "(Não use.)" },
-  { "numero": 60, "titulo": "Você tem um objetivo na vida?" },
-  { "numero": 61, "titulo": "Nas promessas de quem você confia?" },
-  { "numero": 62, "titulo": "Onde encontrar uma esperança real para o futuro?" },
-  { "numero": 63, "titulo": "Tem você espírito evangelizador?" },
-  { "numero": 64, "titulo": "Você ama os prazeres ou a Deus?" },
-  { "numero": 65, "titulo": "Como podemos ser pacíficos num mundo cheio de ódio" },
-  { "numero": 66, "titulo": "Você também vai participar na colheita?" },
-  { "numero": 67, "titulo": "Medite na Bíblia e nas criações de Jeová" },
-  { "numero": 68, "titulo": "‘Continuem a perdoar uns aos outros liberalmente’" },
-  { "numero": 69, "titulo": "Por que mostrar amor abnegado?" },
-  { "numero": 70, "titulo": "Por que Deus merece sua confiança?" },
-  { "numero": 71, "titulo": "‘Mantenha-se desperto’ — Por que e como?" },
-  { "numero": 72, "titulo": "O amor identifica os cristãos verdadeiros" },
-  { "numero": 73, "titulo": "Você tem “um coração sábio”?" },
-  { "numero": 74, "titulo": "Os olhos de Jeová estão em todo lugar" },
-  { "numero": 75, "titulo": "Mostre que você apoia o direito de Jeová governar" },
-  { "numero": 76, "titulo": "Princípios bíblicos — Podem nos ajudar a lidar com os problemas atuais?" },
-  { "numero": 77, "titulo": "“Sempre mostrem hospitalidade”" },
-  { "numero": 78, "titulo": "Sirva a Jeová com um coração alegre" },
-  { "numero": 79, "titulo": "Você vai escolher ser amigo de Deus?" },
-  { "numero": 80, "titulo": "Você baseia sua esperança na ciência ou na Bíblia?" },
-  { "numero": 81, "titulo": "Quem está qualificado para fazer discípulos?" },
-  { "numero": 82, "titulo": "(Não use.)" },
-  { "numero": 83, "titulo": "Será que os cristãos precisam obedecer aos Dez Mandamentos?" },
-  { "numero": 84, "titulo": "Escapará do destino deste mundo?" },
-  { "numero": 85, "titulo": "Boas notícias num mundo violento" },
-  { "numero": 86, "titulo": "Como orar a Deus e ser ouvido por ele?" },
-  { "numero": 87, "titulo": "Qual é a sua relação com Deus?" },
-  { "numero": 88, "titulo": "Por que viver de acordo com os padrões da Bíblia?" },
-  { "numero": 89, "titulo": "Quem tem sede da verdade, venha!" },
-  { "numero": 90, "titulo": "Faça o máximo para alcançar a verdadeira vida!" },
-  { "numero": 91, "titulo": "A presença do Messias e seu domínio" },
-  { "numero": 92, "titulo": "O papel da religião nos assuntos do mundo" },
-  { "numero": 93, "titulo": "Desastres naturais — Quando vão acabar?" },
-  { "numero": 94, "titulo": "A religião verdadeira atende às necessidades da sociedade humana" },
-  { "numero": 95, "titulo": "Não seja enganado pelo ocultismo!" },
-  { "numero": 96, "titulo": "O que vai acontecer com as religiões?" },
-  { "numero": 97, "titulo": "Permaneçamos inculpes em meio a uma geração pervertida" },
-  { "numero": 98, "titulo": "“A cena deste mundo está mudando”" },
-  { "numero": 99, "titulo": "Por que podemos confiar no que a Bíblia diz?" },
-  { "numero": 100, "titulo": "Como fazer amizades fortes e verdadeiras" },
-  { "numero": 101, "titulo": "Jeová é o “Grandioso Criador”" },
-  { "numero": 102, "titulo": "Preste atenção à “palavra profética”" },
-  { "numero": 103, "titulo": "Como você pode ter a verdadeira alegria?" },
-  { "numero": 104, "titulo": "Pais, vocês estão construindo com materiais à prova de fogo?" },
-  { "numero": 105, "titulo": "Somos consolados em todas as nossas tribulações" },
-  { "numero": 106, "titulo": "Arruinar a Terra provocará retribuição divina" },
-  { "numero": 107, "titulo": "Você está treinando bem a sua consciência?" },
-  { "numero": 108, "titulo": "Você pode encarar o futuro com confiança!" },
-  { "numero": 109, "titulo": "O Reino de Deus está próximo" },
-  { "numero": 110, "titulo": "Deus vem primeiro na vida familiar bem-sucedida" },
-  { "numero": 111, "titulo": "É possível que a humanidade seja completamente curada?" },
-  { "numero": 112, "titulo": "(Não use.)" },
-  { "numero": 113, "titulo": "Jovens — Como vocês podem ter uma vida feliz?" },
-  { "numero": 114, "titulo": "Apreço pelas maravilhas da criação de Deus" },
-  { "numero": 115, "titulo": "Não caia nas armadilhas de Satanás" },
-  { "numero": 116, "titulo": "Escolha sabiamente com quem irá associar-se!" },
-  { "numero": 117, "titulo": "Como vencer o mal com o bem" },
-  { "numero": 118, "titulo": "Olhemos os jovens do ponto de vista de Jeová" },
-  { "numero": 119, "titulo": "Por que é benéfico que os cristãos vivam separados do mundo" },
-  { "numero": 120, "titulo": "Por que se submeter à regência de Deus agora" },
-  { "numero": 121, "titulo": "Uma família mundial que será salva da destruição" },
-  { "numero": 122, "titulo": "(Não use.)" },
-  { "numero": 123, "titulo": "(Não use.)" },
-  { "numero": 124, "titulo": "Razões para crer que a Bíblia é de autoria divina" },
-  { "numero": 125, "titulo": "Por que a humanidade precisa de resgate" },
-  { "numero": 126, "titulo": "Quem se salvará?" },
-  { "numero": 127, "titulo": "O que acontece quando morremos?" },
-  { "numero": 128, "titulo": "É o inferno um lugar de tormento ardente?" },
-  { "numero": 129, "titulo": "O que a Bíblia diz sobre a Trindade?" },
-  { "numero": 130, "titulo": "A Terra permanecerá para sempre" },
-  { "numero": 131, "titulo": "(Não use.)" },
-  { "numero": 132, "titulo": "Ressurreição — A vitória sobre a morte!" },
-  { "numero": 133, "titulo": "Tem importância o que cremos sobre a nossa origem?" },
-  { "numero": 134, "titulo": "Será que os cristãos precisam guardar o sábado?" },
-  { "numero": 135, "titulo": "A santidade da vida e do sangue" },
-  { "numero": 136, "titulo": "Será que Deus aprova o uso de imagens na adoração?" },
-  { "numero": 137, "titulo": "Ocorreram realmente os milagres da Bíblia?" },
-  { "numero": 138, "titulo": "Viva com bom juízo num mundo depravado" },
-  { "numero": 139, "titulo": "Sabedoria divina num mundo científico" },
-  { "numero": 140, "titulo": "Quem é realmente Jesus Cristo?" },
-  { "numero": 141, "titulo": "Quando terão fim os gemidos da criação humana?" },
-  { "numero": 142, "titulo": "Por que refugiar-se em Jeová" },
-  { "numero": 143, "titulo": "Confie no Deus de todo consolo" },
-  { "numero": 144, "titulo": "Uma congregação leal sob a liderança de Cristo" },
-  { "numero": 145, "titulo": "Quem é semelhante a Jeová, nosso Deus?" },
-  { "numero": 146, "titulo": "Use a educação para louvar a Jeová" },
-  { "numero": 147, "titulo": "Confie que Jeová tem o poder para nos salvar" },
-  { "numero": 148, "titulo": "Você tem o mesmo conceito de Deus sobre a vida?" },
-  { "numero": 149, "titulo": "O que significa “andar com Deus”?" },
-  { "numero": 150, "titulo": "Este mundo está condenado à destruição?" },
-  { "numero": 151, "titulo": "Jeová é “uma altura protetora” para seu povo" },
-  { "numero": 152, "titulo": "Armagedom — Por que e quando?" },
-  { "numero": 153, "titulo": "Tenha bem em mente o “atemorizante dia”!" },
-  { "numero": 154, "titulo": "O governo humano é pesado na balança" },
-  { "numero": 155, "titulo": "Chegou a hora do julgamento de Babilônia?" },
-  { "numero": 156, "titulo": "O Dia do Juízo — Tempo de temor ou de esperança?" },
-  { "numero": 157, "titulo": "Como os verdadeiros cristãos adornam o ensino divino" },
-  { "numero": 158, "titulo": "Seja corajoso e confie em Jeová" },
-  { "numero": 159, "titulo": "Como encontrar segurança num mundo perigoso" },
-  { "numero": 160, "titulo": "Mantenha a identidade cristã!" },
-  { "numero": 161, "titulo": "Por que Jesus sofreu e morreu?" },
-  { "numero": 162, "titulo": "Seja liberto deste mundo em escuridão" },
-  { "numero": 163, "titulo": "Por que temer o Deus verdadeiro?" },
-  { "numero": 164, "titulo": "Será que Deus ainda está no controle?" },
-  { "numero": 165, "titulo": "Os valores de quem você preza?" },
-  { "numero": 166, "titulo": "Verdadeira fé — O que é e como mostrar" },
-  { "numero": 167, "titulo": "Ajamos sabiamente num mundo insensato" },
-  { "numero": 168, "titulo": "Você pode sentir-se seguro neste mundo atribulado!" },
-  { "numero": 169, "titulo": "Por que ser orientado pela Bíblia?" },
-  { "numero": 170, "titulo": "Quem está qualificado para governar a humanidade?" },
-  { "numero": 171, "titulo": "Poderá viver em paz agora — E para sempre!" },
-  { "numero": 172, "titulo": "Que reputação você tem perante Deus?" },
-  { "numero": 173, "titulo": "Existe uma religião verdadeira do ponto de vista de Deus?" },
-  { "numero": 174, "titulo": "Quem se qualificará para entrar no novo mundo de Deus?" },
-  { "numero": 175, "titulo": "O que prova que a Bíblia é autêntica?" },
-  { "numero": 176, "titulo": "Quando haverá verdadeira paz e segurança?" },
-  { "numero": 177, "titulo": "Onde encontrar ajuda em tempos de aflição?" },
-  { "numero": 178, "titulo": "Ande no caminho da integridade" },
-  { "numero": 179, "titulo": "Rejeite as fantasias do mundo, empenhe-se pelas realidades do Reino" },
-  { "numero": 180, "titulo": "A ressurreição — Por que essa esperança deve ser real para você" },
-  { "numero": 181, "titulo": "Já é mais tarde do que você imagina?" },
-  { "numero": 182, "titulo": "O que o Reino de Deus está fazendo por nós agora?" },
-  { "numero": 183, "titulo": "Desvie seus olhos do que é fútil" },
-  { "numero": 184, "titulo": "A morte é o fim de tudo?" },
-  { "numero": 185, "titulo": "Será que a verdade influencia sua vida?" },
-  { "numero": 186, "titulo": "Sirva em união com o povo feliz de Deus" },
-  { "numero": 187, "titulo": "Por que um Deus amoroso permite a maldade?" },
-  { "numero": 188, "titulo": "Você confia em Jeová?" },
-  { "numero": 189, "titulo": "Ande com Deus e receba bênçãos para sempre" },
-  { "numero": 190, "titulo": "Como se cumprirá a promessa de perfeita felicidade familiar" },
-  { "numero": 191, "titulo": "Como o amor e a fé vencem o mundo" },
-  { "numero": 192, "titulo": "Você está no caminho para a vida eterna?" },
-  { "numero": 193, "titulo": "Os problemas de hoje logo serão coisa do passado" },
-  { "numero": 194, "titulo": "Como a sabedoria de Deus nos ajuda" }
-];
+let allDiscursos = []; // Variável para armazenar todos os discursos
+const localStorageKey = 'discursosData'; // Chave para o localStorage
+const itemsPerPage = 20; // Número de itens por página
+let currentPage = 1; // Página atual
+let filteredDiscursos = []; // Discursos filtrados pela busca
 
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('searchButton');
 const resultsContainer = document.getElementById('results');
 
+// Função para carregar os dados (do localStorage ou do JSON inicial)
+async function loadDiscursosData() {
+    const storedData = localStorage.getItem(localStorageKey);
+    if (storedData) {
+        console.log('Carregando dados do localStorage...');
+        allDiscursos = JSON.parse(storedData);
+        filteredDiscursos = [...allDiscursos]; // Inicialmente, todos os discursos
+        displayResults(filteredDiscursos); // Exibe todos inicialmente
+    } else {
+        console.log('Carregando dados do JSON inicial...');
+        try {
+            const response = await fetch('discursos_data.json'); // Caminho relativo para servir via HTTP
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            allDiscursos = await response.json();
+            localStorage.setItem(localStorageKey, JSON.stringify(allDiscursos)); // Salva no localStorage pela primeira vez
+            console.log('Dados carregados do JSON e salvos no localStorage.');
+            filteredDiscursos = [...allDiscursos]; // Inicialmente, todos os discursos
+            displayResults(filteredDiscursos); // Exibe todos inicialmente
+        } catch (error) {
+            console.error('Erro ao carregar dados dos discursos:', error);
+            resultsContainer.innerHTML = '<div class="status-message error">Erro ao carregar dados dos discursos. Verifique o console.</div>';
+        }
+    }
+}
+
+// Função para exibir os resultados na tela como tabela
+function displayResults(resultados) {
+    resultsContainer.innerHTML = ''; // Limpa resultados anteriores
+
+    if (resultados.length === 0) {
+        resultsContainer.innerHTML = '<div class="status-message info">Nenhum discurso encontrado.</div>';
+        return;
+    }
+
+    // Calcula os índices para paginação
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = Math.min(startIndex + itemsPerPage, resultados.length);
+    const pageResults = resultados.slice(startIndex, endIndex);
+
+    // Cria a tabela
+    const table = document.createElement('table');
+    table.className = 'results-table';
+    
+    // Cabeçalho da tabela
+    const thead = document.createElement('thead');
+    const headerRow = document.createElement('tr');
+    
+    const thNumero = document.createElement('th');
+    thNumero.textContent = 'Nº';
+    
+    const thTitulo = document.createElement('th');
+    thTitulo.textContent = 'Título do Discurso';
+    
+    const thAnotacoes = document.createElement('th');
+    thAnotacoes.textContent = 'Anotações';
+    
+    headerRow.appendChild(thNumero);
+    headerRow.appendChild(thTitulo);
+    headerRow.appendChild(thAnotacoes);
+    thead.appendChild(headerRow);
+    table.appendChild(thead);
+    
+    // Corpo da tabela
+    const tbody = document.createElement('tbody');
+    
+    pageResults.forEach((d, index) => {
+        const row = document.createElement('tr');
+        row.className = 'result-row';
+        row.id = `discurso-${d.numero}`; // Adiciona ID para navegação
+        
+        // Célula do número
+        const tdNumero = document.createElement('td');
+        tdNumero.className = 'discurso-numero';
+        tdNumero.textContent = d.numero;
+        
+        // Célula do título
+        const tdTitulo = document.createElement('td');
+        tdTitulo.className = 'discurso-titulo';
+        tdTitulo.textContent = d.titulo;
+        
+        // Célula das anotações
+        const tdAnotacoes = document.createElement('td');
+        
+        const anotacoesInput = document.createElement('textarea');
+        anotacoesInput.className = 'anotacoes-field';
+        anotacoesInput.value = d.anotacoes || ''; // Usa valor existente ou string vazia
+        anotacoesInput.placeholder = 'Adicione suas anotações aqui...';
+        anotacoesInput.dataset.numero = d.numero; // Liga ao número do discurso
+        
+        // Evento para salvar anotações ao perder o foco
+        anotacoesInput.addEventListener('blur', handleAnotacaoChange);
+        
+        tdAnotacoes.appendChild(anotacoesInput);
+        
+        row.appendChild(tdNumero);
+        row.appendChild(tdTitulo);
+        row.appendChild(tdAnotacoes);
+        
+        tbody.appendChild(row);
+    });
+    
+    table.appendChild(tbody);
+    resultsContainer.appendChild(table);
+    
+    // Adiciona paginação se necessário
+    if (resultados.length > itemsPerPage) {
+        addPagination(resultados.length);
+    }
+}
+
+// Função para adicionar paginação
+function addPagination(totalItems) {
+    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    
+    const paginationDiv = document.createElement('div');
+    paginationDiv.className = 'pagination';
+    
+    // Botão anterior
+    const prevButton = document.createElement('button');
+    prevButton.textContent = '«';
+    prevButton.disabled = currentPage === 1;
+    prevButton.addEventListener('click', () => {
+        if (currentPage > 1) {
+            currentPage--;
+            displayResults(filteredDiscursos);
+        }
+    });
+    paginationDiv.appendChild(prevButton);
+    
+    // Botões de página
+    const maxButtons = 5; // Máximo de botões de página para mostrar
+    const startPage = Math.max(1, currentPage - Math.floor(maxButtons / 2));
+    const endPage = Math.min(totalPages, startPage + maxButtons - 1);
+    
+    for (let i = startPage; i <= endPage; i++) {
+        const pageButton = document.createElement('button');
+        pageButton.textContent = i;
+        pageButton.className = i === currentPage ? 'active' : '';
+        pageButton.addEventListener('click', () => {
+            currentPage = i;
+            displayResults(filteredDiscursos);
+        });
+        paginationDiv.appendChild(pageButton);
+    }
+    
+    // Botão próximo
+    const nextButton = document.createElement('button');
+    nextButton.textContent = '»';
+    nextButton.disabled = currentPage === totalPages;
+    nextButton.addEventListener('click', () => {
+        if (currentPage < totalPages) {
+            currentPage++;
+            displayResults(filteredDiscursos);
+        }
+    });
+    paginationDiv.appendChild(nextButton);
+    
+    resultsContainer.appendChild(paginationDiv);
+}
+
+// Função para lidar com a mudança nas anotações
+function handleAnotacaoChange(event) {
+    const numero = parseInt(event.target.dataset.numero, 10);
+    const newAnotacao = event.target.value;
+
+    // Encontra o índice do discurso no array allDiscursos
+    const index = allDiscursos.findIndex(d => d.numero === numero);
+
+    if (index !== -1) {
+        allDiscursos[index].anotacoes = newAnotacao;
+        // Salva o array atualizado no localStorage
+        localStorage.setItem(localStorageKey, JSON.stringify(allDiscursos));
+        console.log(`Anotação para discurso ${numero} salva.`);
+    } else {
+        console.error(`Discurso com número ${numero} não encontrado para salvar anotação.`);
+    }
+}
+
+// Event listener para o botão de busca
 searchButton.addEventListener('click', () => {
-  const termo = searchInput.value.trim().toLowerCase();
-  resultsContainer.innerHTML = '';
+    const termo = searchInput.value.trim().toLowerCase();
 
-  if (!termo) {
-    resultsContainer.innerHTML = '<p style="color: #888;">Digite algo para pesquisar.</p>';
-    return;
-  }
+    if (!termo) {
+        // Se o termo de busca está vazio, exibe todos os discursos
+        filteredDiscursos = [...allDiscursos];
+        currentPage = 1; // Volta para a primeira página
+        displayResults(filteredDiscursos);
+        return;
+    }
 
-  const resultados = discursos.filter(d =>
-    d.numero.toString() === termo || d.titulo.toLowerCase().includes(termo)
-  );
+    // Filtra os discursos com base no termo de busca (número ou título)
+    filteredDiscursos = allDiscursos.filter(d =>
+        d.numero.toString() === termo || d.titulo.toLowerCase().includes(termo)
+    );
 
-  if (resultados.length === 0) {
-    resultsContainer.innerHTML = '<p style="color: red;">Nenhum discurso encontrado.</p>';
-    return;
-  }
+    currentPage = 1; // Volta para a primeira página
+    displayResults(filteredDiscursos);
 
-  resultados.forEach((d) => {
-    const item = document.createElement('div');
-    item.classList.add('result-item');
-    item.innerHTML = `<strong>Discurso ${d.numero}</strong> — ${d.titulo}`;
-    resultsContainer.appendChild(item);
-  });
+    // Se encontrou exatamente um resultado, rola até ele
+    if (filteredDiscursos.length === 1) {
+        const targetElement = document.getElementById(`discurso-${filteredDiscursos[0].numero}`);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Adiciona um destaque temporário em azul para combinar com o tema
+            targetElement.style.backgroundColor = '#e8f0fa';
+            targetElement.style.boxShadow = '0 0 8px rgba(0, 115, 206, 0.5)';
+            setTimeout(() => {
+                targetElement.style.backgroundColor = ''; // Remove destaque
+                targetElement.style.boxShadow = '';
+            }, 2000);
+        }
+    }
 });
+
+// Event listener para pesquisar ao pressionar Enter
+searchInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        searchButton.click();
+    }
+});
+
+// Carrega os dados ao iniciar a página
+document.addEventListener('DOMContentLoaded', loadDiscursosData);

@@ -1,10 +1,24 @@
-const users = [
-  { username: 'salaoms', password: 'salao110' },
-  { username: 'admin', password: 'admin' },
-];
+// Variável para armazenar os usuários carregados do JSON
+let users = [];
 
 const form = document.getElementById('loginForm');
 const message = document.getElementById('message');
+
+// Função para carregar os usuários do arquivo JSON
+async function loadUsers() {
+  try {
+    const response = await fetch('/discursos_scan/js/users.json');
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    users = await response.json();
+    console.log('Dados de usuários carregados com sucesso.');
+  } catch (error) {
+    console.error('Erro ao carregar dados de usuários:', error);
+    message.style.color = 'red';
+    message.textContent = 'Erro ao carregar dados de autenticação. Tente novamente mais tarde.';
+  }
+}
 
 form.addEventListener('submit', (e) => {
   e.preventDefault(); // evita recarregar
@@ -27,3 +41,6 @@ form.addEventListener('submit', (e) => {
     message.textContent = 'Usuário ou senha inválidos!';
   }
 });
+
+// Carrega os usuários quando a página é carregada
+document.addEventListener('DOMContentLoaded', loadUsers);
