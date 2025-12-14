@@ -28,4 +28,5 @@ Um projeto simples para escanear, visualizar e gerenciar discursos.
 JCZerf
 
 ---
+
 Projeto para fins de estudo e demonstração.
